@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { db } from "@/utils/db";
 import { MockInterview } from "@/utils/schema";
 import { eq } from "drizzle-orm";
-import { Sparkle, Sparkles, WebcamIcon } from "lucide-react";
+import { Sparkles, WebcamIcon } from "lucide-react";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Webcam from "react-webcam";
 
@@ -60,15 +61,15 @@ function Interview({ params }) {
               onUserMedia={() => setWebCamEnabled(true)}
               onUserMediaError={() => setWebCamEnabled(false)}
               mirrored={true}
-              style={{ width: 300, height: 300 }}
+              style={{ width: 400, height: 400 }}
             />
           ) : (
             <>
               <WebcamIcon className="h-72 w-full p-20 my-7 bg-secondary rounded-lg border-spacing-8" />
               <Button
+                variant="ghost"
                 onClick={() => setWebCamEnabled(true)}
-                variant="outline"
-                className="w-full hover:bg-[#000000] hover:text-gray-200  transition-all"
+                className="w-full  hover:border-[#e10c81] hover:text-gray-900  transition-all"
               >
                 Enable your camera and Micropscope
               </Button>
@@ -77,9 +78,11 @@ function Interview({ params }) {
         </div>
       </div>
       <div className="flex justify-end items-end">
-        <Button className=" bg-[#f8e5ec] text-gray-500 hover:text-gray-100 hover:bg-[#d10a54]">
-          Start Interview
-        </Button>
+        <Link href={"/dashboard/interview/" + params.interviewId + "/start"}>
+          <Button className=" bg-[#f8e5ec] text-gray-500 hover:text-gray-100 hover:bg-[#d10a54]">
+            Start Interview
+          </Button>
+        </Link>
       </div>
     </div>
   );
