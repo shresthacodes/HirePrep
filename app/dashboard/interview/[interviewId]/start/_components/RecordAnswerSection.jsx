@@ -9,7 +9,6 @@ import { Mic, StopCircle } from "lucide-react";
 import { toast } from "sonner";
 import { chatSession } from "@/utils/GeminiAIModel";
 
-
 function RecordAnswerSection(mockInterviewQuestion, activeQuestionIndex) {
   const [userAnswer, setuserAnswer] = useState("");
   const {
